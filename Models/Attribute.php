@@ -24,7 +24,7 @@ class Attribute extends Model
 
     protected $table = self::TABLE;
 
-    protected $fillable = ['name', 'image'];
+    protected $fillable = ['image'];
 
     protected $allowedSorts = ['name', 'sorting', 'updated_at'];
 

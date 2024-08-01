@@ -45,7 +45,6 @@ class AttributeResource extends Resource
             ->schema([
                 Section::make()
                     ->schema([
-                        Schema::getName(),
                         Schema::getSorting(),
                         Schema::getImage()
                     ])
