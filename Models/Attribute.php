@@ -8,6 +8,7 @@ use App\Traits\HasTimestamps;
 use App\Traits\HasTranslate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\Seo\Traits\HasSeo;
 
 class Attribute extends Model
@@ -30,5 +31,10 @@ class Attribute extends Model
     public static function getDb(): string
     {
         return 'attributes';
+    }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'product_id');
     }
 }
