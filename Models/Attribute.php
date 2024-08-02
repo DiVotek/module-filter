@@ -14,17 +14,16 @@ class Attribute extends Model
 {
     use HasFactory;
     use HasTable;
-    use HasTimestamps;
     use HasSorting;
-    use HasTimestamps;
     use HasSeo;
+    use HasTimestamps;
     use HasTranslate;
 
     public const TABLE = 'attributes';
 
     protected $table = self::TABLE;
 
-    protected $fillable = ['image'];
+    protected $fillable = ['name', 'image'];
 
     protected $allowedSorts = ['name', 'sorting', 'updated_at'];
 

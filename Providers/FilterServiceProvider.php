@@ -11,7 +11,7 @@ class FilterServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-//        $this->loadMigrations();
+        $this->loadMigrations();
     }
 
     public function register(): void
@@ -20,6 +20,6 @@ class FilterServiceProvider extends ServiceProvider
 
     private function loadMigrations(): void
     {
-//        $this->loadMigrationsFrom(module_path($this->moduleName, 'Migrations'));
+        $this->loadMigrationsFrom(module_path($this->moduleName, 'Migrations'));
     }
 }

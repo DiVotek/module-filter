@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create(Attribute::getDb(), function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('image')->nullable();
             $table->integer('sorting')->default(0);
             Attribute::timestampFields($table);
