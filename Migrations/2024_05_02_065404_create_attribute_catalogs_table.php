@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Filter\Models\Attribute;
+use Modules\Promotions\Models\Promotion;
 
 return new class extends Migration
 {
@@ -12,11 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(Attribute::getDb(), function (Blueprint $table) {
-            $table->id();
-            $table->string('image')->nullable();
-            $table->integer('sorting')->default(0);
-            Attribute::timestampFields($table);
+        Schema::create('attribute_catalogs', function (Blueprint $table) {
+            $table->unsignedBigInteger('attribute_id');
+            $table->unsignedBigInteger('catalog_id');
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(Attribute::getDb());
+        Schema::dropIfExists('attribute_catalogs');
     }
 };
