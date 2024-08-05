@@ -12,9 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attribute_catalogs', function (Blueprint $table) {
+        Schema::create('attribute_categories', function (Blueprint $table) {
             $table->unsignedBigInteger('attribute_id');
-            $table->unsignedBigInteger('catalog_id');
+            $table->unsignedBigInteger('category_id');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attribute_catalogs');
+        Schema::dropIfExists('attribute_categories');
     }
 };

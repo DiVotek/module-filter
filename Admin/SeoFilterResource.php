@@ -27,7 +27,7 @@ class SeoFilterResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Catalog');
+        return __('Category');
     }
 
     public static function getModelLabel(): string

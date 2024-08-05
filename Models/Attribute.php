@@ -9,7 +9,7 @@ use App\Traits\HasTranslate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Modules\Catalog\Models\Catalog;
+use Modules\Category\Models\Category;
 use Modules\Seo\Traits\HasSeo;
 
 class Attribute extends Model
@@ -34,9 +34,9 @@ class Attribute extends Model
         return 'attributes';
     }
 
-    public function catalogs(): BelongsToMany
+    public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Catalog::class, 'attribute_catalogs', 'attribute_id', 'catalog_id');
+        return $this->belongsToMany(Category::class, 'attribute_categories', 'attribute_id', 'category_id');
     }
 
     public function products(): BelongsToMany
