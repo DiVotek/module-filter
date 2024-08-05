@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\Category\Models\Category;
+use Modules\Product\Models\Product;
 use Modules\Seo\Traits\HasSeo;
 
 class Attribute extends Model

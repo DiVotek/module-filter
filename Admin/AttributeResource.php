@@ -57,8 +57,8 @@ class AttributeResource extends Resource
         return $table
             ->columns([
                 TableSchema::getName(),
-                TableSchema::getSorting(),
                 TableSchema::getImage(),
+                TableSchema::getSorting(),
                 TableSchema::getUpdatedAt()
             ])
             ->headerActions([
