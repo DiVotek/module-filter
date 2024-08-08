@@ -19,8 +19,6 @@ class SeoFilter extends Model
     use HasTranslate;
     use HasTimestamps;
 
-    public const TABLE = 'seo_filters';
-
     protected $fillable = ['name', 'old_url', 'new_url'];
 
     public static function getDb(): string

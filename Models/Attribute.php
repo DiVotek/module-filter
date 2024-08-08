@@ -22,13 +22,7 @@ class Attribute extends Model
     use HasTimestamps;
     use HasTranslate;
 
-    public const TABLE = 'attributes';
-
-    protected $table = self::TABLE;
-
     protected $fillable = ['name', 'image'];
-
-    protected $allowedSorts = ['name', 'sorting', 'updated_at'];
 
     public static function getDb(): string
     {

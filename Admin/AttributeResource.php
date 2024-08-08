@@ -3,6 +3,7 @@
 namespace Modules\Filter\Admin;
 
 use App\Filament\Resources\TranslateResource\RelationManagers\TranslatableRelationManager;
+use Filament\Forms\Components\Fieldset;
 use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Tables\Actions\Action;
 use Modules\Filter\Admin\AttributeResource\Pages;
@@ -26,7 +27,7 @@ class AttributeResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Category');
+        return __('Filter');
     }
 
     public static function getModelLabel(): string
@@ -76,6 +77,33 @@ class AttributeResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+            ])
+            ->headerActions([
+                Tables\Actions\Action::make('Attribute')
+                    ->slideOver()
+                    ->icon('heroicon-o-cog')
+                    ->modal()
+                    ->fillForm(function (): array {
+                        return [
+                            'filter_attributes' => setting(config('settings.filter_attributes')),
+                        ];
+                    })
+                    ->action(function (array $data): void {
+                        setting([
+                            config('settings.filter_attributes') => $data['filter_attributes'] ?? '',
+                        ]);
+                    })
+                    ->form(function ($form) {
+                        return $form
+                            ->schema([
+                                Section::make('')->schema([
+                                    Schema::getSelect('attributes', Attribute::query()
+                                        ->pluck('name', 'id')
+                                        ->toArray() ?? []
+                                    )->multiple()
+                                ]),
+                            ]);
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
