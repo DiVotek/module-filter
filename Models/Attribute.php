@@ -8,10 +8,10 @@ use App\Traits\HasTimestamps;
 use App\Traits\HasTranslate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\Category\Models\Category;
 use Modules\Product\Models\Product;
 use Modules\Seo\Traits\HasSeo;
+use Nwidart\Modules\Facades\Module;
 
 class Attribute extends Model
 {
@@ -29,13 +29,17 @@ class Attribute extends Model
         return 'attributes';
     }
 
-    public function categories(): BelongsToMany
+    public function categories()
     {
-        return $this->belongsToMany(Category::class, 'attribute_categories', 'attribute_id', 'category_id');
+        if (Module::find('Category') && Module::find('Category')->isEnabled()) {
+            return $this->belongsToMany(Category::class, 'attribute_categories', 'attribute_id', 'category_id');
+        }
     }
 
-    public function products(): BelongsToMany
+    public function products()
     {
-        return $this->belongsToMany(Product::class, 'attribute_products', 'attribute_id', 'product_id');
+        if (Module::find('Product') && Module::find('Product')->isEnabled()) {
+            return $this->belongsToMany(Product::class, 'attribute_products', 'attribute_id', 'product_id')->withPivot('language_id', 'value');
+        }
     }
 }
