@@ -12,6 +12,10 @@ class FilterServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrations();
+        $this->mergeConfigFrom(
+            module_path('Filter', 'config/settings.php'),
+            'settings'
+        );
     }
 
     public function register(): void
