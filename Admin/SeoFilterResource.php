@@ -63,12 +63,7 @@ class SeoFilterResource extends Resource
                 TableSchema::getUpdatedAt()
             ])
             ->headerActions([
-                Action::make(__('Help'))
-                    ->iconButton()
-                    ->icon('heroicon-o-question-mark-circle')
-                    ->modalDescription(__('Summary'))
-                    ->modalFooterActions([]),
-
+                Schema::helpAction('Seo filter help'),
             ])
             ->reorderable('sorting')
             ->filters([

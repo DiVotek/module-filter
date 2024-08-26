@@ -58,7 +58,6 @@ class AttributeResource extends Resource
         return $table
             ->columns([
                 TableSchema::getName(),
-                TableSchema::getImage(),
                 TableSchema::getSorting(),
                 TableSchema::getUpdatedAt()
             ])
@@ -79,7 +78,8 @@ class AttributeResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->headerActions([
-                Tables\Actions\Action::make('Attribute')
+                Schema::helpAction('Attribute helper text'),
+                Tables\Actions\Action::make(__('Settings'))
                     ->slideOver()
                     ->icon('heroicon-o-cog')
                     ->modal()
@@ -100,7 +100,8 @@ class AttributeResource extends Resource
                                     Schema::getSelect('attributes', Attribute::query()
                                         ->pluck('name', 'id')
                                         ->toArray() ?? []
-                                    )->multiple()
+                                    )->multiple()->label(__('Attributes for filter'))
+                                    ->helperText(__('Select attributes that will be used for filtering products'))
                                 ]),
                             ]);
                     }),
