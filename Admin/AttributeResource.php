@@ -14,6 +14,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Modules\Filter\Admin\AttributeResource\RelationManagers\ProductsRelationManager;
 use Modules\Filter\Models\Attribute;
 
 class AttributeResource extends Resource
@@ -118,6 +119,7 @@ class AttributeResource extends Resource
         return [
             RelationGroup::make('Seo and translates', [
                 TranslatableRelationManager::class,
+                ProductsRelationManager::class,
             ]),
         ];
     }
